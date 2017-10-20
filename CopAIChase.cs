@@ -8,7 +8,7 @@ public class CopAIChase : MonoBehaviour {
 	public Transform target;
 	public GameObject redLight, blueLight;
 
-	private float maxSpeed = 25.0f;
+	private float maxSpeed = 20.0f;//was 25
 	private Rigidbody rigidbody;
 	private int flashingLight = 0; // 0 for off, 1 for red, 2 for blue
 	private float nextLightTime = 0.0f;
@@ -46,7 +46,7 @@ public class CopAIChase : MonoBehaviour {
 		//transform.position = Vector3.MoveTowards(transform.position, target.position, step);
 
 		//Physics :)
-
+		/*
 		Vector3 lookPos = target.position - transform.position; // use transform.forward;
 		lookPos.y = 0;
 		Quaternion rotation = Quaternion.LookRotation(lookPos);
@@ -57,7 +57,7 @@ public class CopAIChase : MonoBehaviour {
 		} else {
 			rigidbody.AddTorque (transform.up * magnitude);
 		}
-
+		*/
 		/*
 		var lookPos = target.position - transform.position;
 		var x = Vector3.Cross(transform.forward.normalized, lookPos.normalized);
@@ -69,12 +69,12 @@ public class CopAIChase : MonoBehaviour {
 		*/
 
 		//THIS SHOULD WORK!!! WORKED ON STUPID COP!
-		/*
+
 		var lookPos = target.position - transform.position;
 		lookPos.y = 0;
 		var rotation = Quaternion.LookRotation(lookPos);
 		transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 1);
-		*/
+
 
 		float terrainHeightWhereWeAre = Terrain.activeTerrain.SampleHeight (transform.position);
 		if (terrainHeightWhereWeAre + 0.1 > transform.position.y
